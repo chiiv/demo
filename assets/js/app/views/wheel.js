@@ -39,6 +39,12 @@ define(["app/views/common"], function( Common ){
 			);
 			// update state
 			this.state.degrees = degrees;
+			// post transition events
+			$(particle).on('transitionend webkitTransitionEnd oTransitionEnd', _.bind(this.reset, this));
+		},
+
+		reset: function(){
+			console.log("reset");
 		}
 
 	});
