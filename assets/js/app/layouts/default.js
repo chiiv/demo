@@ -1,4 +1,4 @@
-define(["backbone.app", "app/layouts/common", "app/views/index"], function( APP, Common, Content ){
+define(["backbone.app", "app/layouts/common", "app/views/wheel", "app/views/next-achievements"], function( APP, Common, Wheel, NextAchievements ){
 
 	var Parent = Common;
 
@@ -13,7 +13,8 @@ define(["backbone.app", "app/layouts/common", "app/views/index"], function( APP,
 		initialize: function(options){
 
 			this.set({
-				//content: new Content()
+				wheel: new Wheel(),
+				"next-achievements": new NextAchievements()
 			});
 
 			return Parent.prototype.initialize.call(this, options);
