@@ -45,8 +45,7 @@ define(["app/views/common"], function( Common ){
 
 		reset: function(){
 			_.log("reset");
-			// release the wheel
-			this.state.spinning = false;
+			var self = this;
 			// reset degrees to < 360
 			var degrees = this.state.degrees - ( Math.floor( this.state.degrees / 360 ) * 360 );
 			// update dom
@@ -62,9 +61,12 @@ define(["app/views/common"], function( Common ){
 			// why doesn't jQuery's delay() work?
 			setTimeout(function(){
 				$spinner.addClass("transition");
-			},500);
-			// save new degrees in state
-			this.state.degrees = degrees;
+				// release the wheel
+				self.state.spinning = false;
+				// save new degrees in state
+				self.state.degrees = degrees;
+			},300);
+
 		}
 
 	});
