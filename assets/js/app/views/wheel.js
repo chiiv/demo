@@ -14,6 +14,7 @@ define(["app/views/common"], function( Common ){
 		},
 
 		state: {
+			degrees: 0,
 			spinning: false
 		},
 
@@ -23,7 +24,7 @@ define(["app/views/common"], function( Common ){
 
 			// randomize strength ( 5 < x < 10 )
 			var rotations = 5 + ( Math.random()* 5 );
-			var degrees = Math.round( rotations*360 );
+			var degrees = this.state.degrees + Math.round( rotations*360 );
 			// in the future: update data-rotate attribute
 			//$(this.el).find(".spinner").attr("data-rotate", degrees);
 
@@ -36,6 +37,8 @@ define(["app/views/common"], function( Common ){
 					'transform': "rotate3d(0,0,1,"+ degrees +"deg)"
 				}
 			);
+			// update state
+			this.state.degrees = degrees;
 		}
 
 	});
