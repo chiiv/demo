@@ -22,17 +22,18 @@ define(["app/views/common"], function( Common ){
 			if( this.state.spinning ) return false;
 
 			// randomize strength ( 5 < x < 10 )
-			var rotations = 5 + Math.floor( Math.random()* 5 );
+			var rotations = 5 + ( Math.random()* 5 );
+			var degrees = Math.round( rotations*360 );
 			// in the future: update data-rotate attribute
-			//$(this.el).find(".spinner").attr("data-rotate", rotations * 360);
+			//$(this.el).find(".spinner").attr("data-rotate", degrees);
 
 			$(this.el).find(".spinner").css(
 				{
-					'-webkit-transform': "rotate3d(0,0,1,"+ rotations*360 +"deg)",
-					'-o-transform': "rotate3d(0,0,1,"+ rotations*360 +"deg)",
-					'-ms-transform': "rotate3d(0,0,1,"+ rotations*360 +"deg)",
-					'-moz-transform': "rotate3d(0,0,1,"+ rotations*360 +"deg)",
-					'transform': "rotate3d(0,0,1,"+ rotations*360 +"deg)"
+					'-webkit-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
+					'-o-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
+					'-ms-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
+					'-moz-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
+					'transform': "rotate3d(0,0,1,"+ degrees +"deg)"
 				}
 			);
 		}
