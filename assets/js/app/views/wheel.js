@@ -52,7 +52,7 @@ define(["app/views/common"], function( Common ){
 			// update dom
 			var $spinner = $(this.el).find(".spinner");
 			$spinner.removeClass("transition");
-			$spinner..css({
+			$spinner.css({
 				'-webkit-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
 				'-o-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
 				'-ms-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
