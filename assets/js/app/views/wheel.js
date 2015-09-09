@@ -4,7 +4,7 @@ define(["app/views/common"], function( Common ){
 
 	var View = Parent.extend({
 
-		el: ".wheel",
+		el: ".wof",
 
 		options: {
 		},
