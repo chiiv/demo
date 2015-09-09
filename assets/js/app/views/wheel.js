@@ -50,13 +50,19 @@ define(["app/views/common"], function( Common ){
 			// reset degrees to < 360
 			var degrees = this.state.degrees - ( Math.floor( this.state.degrees / 360 ) * 360 );
 			// update dom
-			$(this.el).find(".spinner").removeClass("transition").delay(100).css({
+			var $spinner = $(this.el).find(".spinner");
+			$spinner.removeClass("transition");
+			$spinner..css({
 				'-webkit-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
 				'-o-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
 				'-ms-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
 				'-moz-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
 				'transform': "rotate3d(0,0,1,"+ degrees +"deg)"
-			}).delay(100).addClass("transition");
+			});
+			// why doesn't jQuery's delay() work?
+			setTimeout(function(){
+				$spinner.addClass("transition");
+			},500);
 			// save new degrees in state
 			this.state.degrees = degrees;
 		}
