@@ -13,7 +13,7 @@ define(["backbone.app", "app/layouts/common", "app/views/index"], function( APP,
 		initialize: function(options){
 
 			this.set({
-				content: new Content()
+				//content: new Content()
 			});
 
 			return Parent.prototype.initialize.call(this, options);

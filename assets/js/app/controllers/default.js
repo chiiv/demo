@@ -2,9 +2,8 @@ define([
 	"backbone",
 	"backbone.app",
 	"app/controllers/common",
-	"app/layouts/default",
-	"app/layouts/home"
-	], function( Backbone, APP, Common, LayoutDefault, LayoutHome ){
+	"app/layouts/default"
+	], function( Backbone, APP, Common, LayoutDefault ){
 
 	var Router = Common.extend({
 
@@ -19,15 +18,12 @@ define([
 
 			this.data.set({
 				header: new Backbone.Model({
-					title: ( onscribe.isAuth() ) ? locale.get("header-home") : locale.get("header-index")
+					//title: ( onscribe.isAuth() ) ? locale.get("header-home") : locale.get("header-index")
 				})
 			});
 
-			if( onscribe.isAuth() ){
-				this.layout = new LayoutHome({ data: this.data });
-			} else {
-				this.layout = new LayoutDefault({ data: this.data });
-			}
+			this.layout = new LayoutDefault({ data: this.data });
+
 		}
 
 	});
