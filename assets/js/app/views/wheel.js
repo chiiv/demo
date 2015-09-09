@@ -21,26 +21,25 @@ define(["app/views/common"], function( Common ){
 		start: function( e ){
 			// prerequisites
 			if( this.state.spinning ) return false;
-
+			// variables
+			var $spinner = $(this.el).find(".spinner");
 			// randomize strength ( 5 < x < 10 )
 			var rotations = 5 + ( Math.random()* 5 );
 			var degrees = this.state.degrees + Math.round( rotations*360 );
 			// in the future: update data-rotate attribute
 			//$(this.el).find(".spinner").attr("data-rotate", degrees);
 
-			$(this.el).find(".spinner").css(
-				{
-					'-webkit-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
-					'-o-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
-					'-ms-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
-					'-moz-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
-					'transform': "rotate3d(0,0,1,"+ degrees +"deg)"
-				}
-			);
+			$spinner.css({
+				'-webkit-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
+				'-o-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
+				'-ms-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
+				'-moz-transform': "rotate3d(0,0,1,"+ degrees +"deg)",
+				'transform': "rotate3d(0,0,1,"+ degrees +"deg)"
+			});
 			// update state
 			this.state.degrees = degrees;
 			// post transition events
-			$(particle).on('transitionend webkitTransitionEnd oTransitionEnd', _.bind(this.reset, this));
+			$spinner.on('transitionend webkitTransitionEnd oTransitionEnd', _.bind(this.reset, this));
 		},
 
 		reset: function(){
