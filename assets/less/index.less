@@ -19,10 +19,27 @@
 		min-width: 500px;
 		min-height: 500px;
 		margin: 0 auto;
-		background-image: url(../img/pie.svg);
-		background-size: contain;
-		background-position: center center;
-		background-repeat: no-repeat;
+
+		&:before {
+			/* background-image: conic-gradient(#86AD00 10%, #0092B9 20%, #F2B705 30%, #D97904 40%, #b30 50%, #86AD00 60%, #0092B9 70%, #F2B705 80%, #D97904 90%, b30 0); */
+			background-image: url(../img/pie.svg);
+			background-size: contain;
+			background-position: center center;
+			background-repeat: no-repeat;
+
+			-webkit-transition: 5s ease;
+			-moz-transition: 5s ease;
+			-o-transition: 5s ease;
+			-ms-transition: 5s ease;
+			transition: 5s ease;
+
+			-webkit-transform: rotate3d(0,0,1, attr(data-rotate deg));
+			-o-transform: rotate3d(0,0,1, attr(data-rotate deg));
+			-ms-transform: rotate3d(0,0,1, attr(data-rotate deg));
+			-moz-transform: rotate3d(0,0,1, attr(data-rotate deg));
+			transform: rotate3d(0,0,1, attr(data-rotate deg));
+
+		}
 	}
 
 	.needle {
