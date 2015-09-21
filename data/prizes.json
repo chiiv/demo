@@ -1,0 +1,8 @@
+[
+	{ "text":"Random", "value": null },
+	{ "text":"200 points", "value": 200 },
+	{ "text":"500 points", "value": 500 },
+	{ "text":"100 points", "value": 100 },
+	{ "text":"Empty", "value": -1 },
+	{ "text":"50 points", "value": 50 }
+]
