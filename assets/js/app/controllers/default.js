@@ -2,8 +2,9 @@ define([
 	"backbone",
 	"backbone.app",
 	"app/controllers/common",
-	"app/layouts/default"
-	], function( Backbone, APP, Common, LayoutDefault ){
+	"app/layouts/default",
+	"app/collections/prizes"
+], function( Backbone, APP, Common, Layout, Prizes ){
 
 	var Router = Common.extend({
 
@@ -19,10 +20,11 @@ define([
 			this.data.set({
 				header: new Backbone.Model({
 					//title: ( onscribe.isAuth() ) ? locale.get("header-home") : locale.get("header-index")
-				})
+				}),
+				prizes: new Prizes()
 			});
 
-			this.layout = new LayoutDefault({ data: this.data });
+			this.layout = new Layout({ data: this.data });
 
 		}
 

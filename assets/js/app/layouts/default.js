@@ -13,7 +13,9 @@ define(["backbone.app", "app/layouts/common", "app/views/wheel", "app/views/next
 		initialize: function(options){
 
 			this.set({
-				wheel: new Wheel(),
+				wheel: new Wheel({
+					collection: options.data.get("prizes")
+				}),
 				"next-achievements": new NextAchievements()
 			});
 
