@@ -7,6 +7,7 @@ define(["app/views/common"], function( Common ){
 		el: ".wof",
 
 		options: {
+			render: false
 		},
 
 		events: {
@@ -16,6 +17,18 @@ define(["app/views/common"], function( Common ){
 		state: {
 			degrees: 0,
 			spinning: false
+		},
+
+		initialize: function( options ){
+			this.setup();
+			// post transition events
+			return Parent.prototype.initialize.call(this, options);
+		},
+
+		setup: function(){
+			var $spinner = $(this.el).find(".spinner");
+			$spinner.on('transitionend webkitTransitionEnd oTransitionEnd', _.bind(this.reset, this));
+
 		},
 
 		start: function( e ){
@@ -39,8 +52,6 @@ define(["app/views/common"], function( Common ){
 			// update state
 			this.state.spinning = true;
 			this.state.degrees = degrees;
-			// post transition events
-			$spinner.on('transitionend webkitTransitionEnd oTransitionEnd', _.bind(this.reset, this));
 		},
 
 		reset: function(){
@@ -65,8 +76,22 @@ define(["app/views/common"], function( Common ){
 				self.state.spinning = false;
 				// save new degrees in state
 				self.state.degrees = degrees;
+				// display achievement
+				self._findPrize();
 			},300);
 
+		},
+
+		// internal
+		_findPrize: function(){
+			//console.log( this.state.degrees );
+			var degrees = this.state.degrees;
+			// prizes are doubles to cover the whole circle
+			var prizes = 2 * this.collection.length;
+			var prize = Math.floor(degrees / (360 / prizes) );
+			if( prize >= this.collection.length ) prize -= this.collection.length;
+			console.log( prize );
+			console.log( this.collection.at( prize ).get("text") );
 		}
 
 	});
